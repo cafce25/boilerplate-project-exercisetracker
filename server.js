@@ -46,17 +46,12 @@ async function createAndSaveExercise(user_id, description, duration, date) {
   }
 
   const exercise = new Exercise();
-
   exercise.description = description;
   exercise.duration = duration;
   exercise.date = date;
   exercise.user_id = user_id;
 
-  await exercise.save();
-  user.log.push(exercise._id);
-  user.count = user.log.length;
-  await user.save();
-  return exercise;
+  return exercise.save();
 }
 
 app.use(cors())
